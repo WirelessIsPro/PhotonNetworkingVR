@@ -27,6 +27,9 @@ namespace Networking
 
         void Update()
         {
+		// forgot to put this ismine check
+	     if (pv.IsMine) 
+         {
             Head.transform.position = networkManager.Head.transform.position;
             Body.transform.rotation = networkManager.Head.transform.rotation;
             Body.transform.position = networkManager.Body.transform.position;
@@ -36,5 +39,6 @@ namespace Networking
             RightHand.transform.position = networkManager.RightHand.transform.position;
             RightHand.transform.rotation = networkManager.RightHand.transform.rotation;
         }
+		}
     }
 }
