@@ -14,6 +14,7 @@ namespace Networking
         public GameObject Head;
         public GameObject Body; // maybe if I make the body not move w head
         public string NetworkPlayerPath;
+        public GameObject LocalPlayer; // store so I can do cosmetics easier lols
         // I don't even know what  callbacks to do or anything
         void Start()
         {
@@ -21,6 +22,18 @@ namespace Networking
             // just connect on start I really don't know
             PhotonNetwork.ConnectUsingSettings();
             Debug.Log("connecting");
+        }
+
+        void Update()
+        {
+            foreach (PhotonView view in FindObjectsOfType<PhotonView>())
+            {
+                if (view.IsMine && view.gameObject.name.Contains("NetworkPlayer"))
+                {
+                    LocalPlayer = view.gameObject;
+                    break;
+                }
+            }
         }
 
         public override void OnConnectedToMaster()
