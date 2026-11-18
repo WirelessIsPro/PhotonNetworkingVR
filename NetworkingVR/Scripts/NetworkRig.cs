@@ -79,8 +79,10 @@ namespace Networking
                 LeftHand.transform.rotation = networkManager.LeftHand.transform.rotation;
                 RightHand.transform.position = networkManager.RightHand.transform.position;
                 RightHand.transform.rotation = networkManager.RightHand.transform.rotation;
+                // 11/18/26, I am fixing name issue
+                 name.text = PhotonNetwork.NickName;
             }
-            name.text = PhotonNetwork.NickName;
+           
         }
 
 
@@ -117,7 +119,7 @@ namespace Networking
 
         public void ChangeName(string name)
         {
-            name = PhotonNetwork.NickName;
+            PhotonNetwork.NickName = name;
         }
 
         // it was insaenlyu laggy because there was SO MANY shit going at once, I made it just smth to call
